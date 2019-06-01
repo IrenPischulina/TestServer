@@ -20,6 +20,7 @@ public:
     explicit SetTransitions(QWidget *parent = 0);
     ~SetTransitions();
     void openFile(QString fileName);
+    void saveFile(QString fileName);
 
 public slots:
     void addLineEdit();

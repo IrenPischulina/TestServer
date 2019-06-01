@@ -33,6 +33,8 @@ public slots:
     void updateText(QString text);
     void clearTransitionsList();
     void openFile();
+    void saveFile();
+
 
 private:
     Ui::MainWindow *ui;

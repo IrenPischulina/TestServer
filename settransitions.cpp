@@ -50,22 +50,46 @@ void SetTransitions::openFile(QString fileName)
     file.open(QIODevice::ReadOnly);
 
 
+    //считывание данных из файла
     while (!(in.atEnd())) {
 
+        //считывается номер состояния
         in >> strNumb;
-        in >> strName;
-        in >> strToStates;
+        in >> strName;//название
+        in >> strToStates;//переходы
 
-        addLineEdit();
+        addLineEdit();//на форму добавляется строка с лайнедитами
 
+        //запись данных в лайнедиты
         numberLineEdits[numberLineEdits.size() - 1] -> setText(strNumb);
         nameLineEdits[nameLineEdits.size() - 1] -> setText(strName);
         toStatesLineEdits[toStatesLineEdits.size() - 1] -> setText(strToStates);
 
     }
+    file.close();//закрытие файла
+    deleteSlot();//удаление лишней строки
+    okaySlot();//нажатие кнопки ок
+}
+
+void SetTransitions::saveFile(QString fileName)
+{
+    QFile file(fileName);
+
+    QTextStream stream(&file);
+    file.open(QIODevice::WriteOnly);
+
+
+    for( int i = 0; i < numberLineEdits.size(); i ++)
+    {
+        stream << numberLineEdits[i] -> text() +
+                  " " +
+                  nameLineEdits[i] -> text() +
+                  " " +
+                  toStatesLineEdits[i] -> text() +
+                  "\n";
+        stream.flush();
+    }
     file.close();
-    deleteSlot();
-    okaySlot();
 }
 
 void SetTransitions::addLineEdit()
@@ -91,9 +115,11 @@ void SetTransitions::addLineEdit()
 
 void SetTransitions::okaySlot()
 {
+    //три вектора под данные о состояниях
     QVector <int> numbers;
     QVector <QString> names;
     QVector <QVector <int>> transitions;
+    //заполнение их данными, которые передадутся в контроллер для создания объектов-состояний
     for (int i = 0; i < numberLineEdits.size(); i ++)
     {
         numbers.push_back(numberLineEdits[i] -> text().toInt());

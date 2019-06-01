@@ -79,10 +79,17 @@ MainWindow::MainWindow(QWidget *parent) :
             this,
             SLOT(setIPAddress()));
 
+    //открытие файла
     connect(ui -> action_8,
             SIGNAL(triggered(bool)),
             this,
             SLOT(openFile()));
+
+    //сохранение информации о состояниях в файл
+    connect(ui -> action_5,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(saveFile()));
 
 
 
@@ -122,16 +129,32 @@ void MainWindow::clearTransitionsList()
 void MainWindow::openFile()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "",
-            tr("Text Files (*.txt)"));
+                                                    tr("Text Files (*.txt)"));
 
-        if (fileName != "") {
-            QFile file(fileName);
-            if (!file.open(QIODevice::ReadOnly)) {
-                QMessageBox::critical(this, tr("Error"), tr("Could not open file"));
-                return;
-            }
-            file.close();
-            setTransitions -> openFile(fileName);
+    if (fileName != "") {
+        QFile file(fileName);
+        if (!file.open(QIODevice::ReadOnly)) {
+            QMessageBox::critical(this, tr("Error"), tr("Could not open file"));
+            return;
         }
+        file.close();
+        setTransitions -> openFile(fileName);
+    }
 
+}
+
+void MainWindow::saveFile()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "",
+                                                    tr("Text Files (*.txt)")) + ".txt";
+
+    if (fileName != "") {
+        QFile file(fileName);
+        if (!file.open(QIODevice::WriteOnly)) {
+            QMessageBox::critical(this, tr("Error"), tr("Could not save file"));
+            return;
+        }
+        file.close();
+        setTransitions -> saveFile(fileName);
+    }
 }
