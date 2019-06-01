@@ -1,5 +1,6 @@
 #include "setip.h"
 #include "ui_setip.h"
+#include "receiver.h"
 
 SetIP::SetIP(QWidget *parent) :
     QWidget(parent),
@@ -14,10 +15,15 @@ SetIP::SetIP(QWidget *parent) :
             SIGNAL(clicked(bool)),
             this,
             SLOT(okaySlot()));
+
     connect(ui -> cancelButton,
             SIGNAL(clicked(bool)),
             this,
             SLOT(cancelSlot()));
+
+    ui -> ipLineEdit -> setText(Receiver::getDefaultIP());
+    ui -> portLineEdit -> setText(QString::number(Receiver::getDefaultPort()));
+
 }
 
 SetIP::~SetIP()
@@ -36,6 +42,6 @@ void SetIP::okaySlot()
 void SetIP::cancelSlot()
 {
     ui -> ipLineEdit -> setText(oldIP);
-    ui -> portLineEdit ->setText(QString::number(oldPort));
+    ui -> portLineEdit -> setText(QString::number(oldPort));
     hide();
 }

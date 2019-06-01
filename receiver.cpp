@@ -8,13 +8,23 @@ Receiver::Receiver()
     socket = new QUdpSocket();
     //"192.168.1.131"
     //"10.0.183.148"
-    socket -> bind(QHostAddress("192.168.1.131"), 9002);
+    socket -> bind(QHostAddress(defaultIP), defaultPort);
     connect(socket, SIGNAL(readyRead()), SLOT(readSlot()));
 }
 
 void Receiver::setNetworkSettings(QString IP, int port)
 {
     socket -> bind(QHostAddress(IP), port);
+}
+
+QString Receiver::getDefaultIP()
+{
+    return defaultIP;
+}
+
+int Receiver::getDefaultPort()
+{
+    return defaultPort;
 }
 
 void Receiver::readSlot()
