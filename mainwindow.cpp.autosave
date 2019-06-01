@@ -129,10 +129,11 @@ void MainWindow::openFile()
                 QMessageBox::critical(this, tr("Error"), tr("Could not open file"));
                 return;
             }
+            file.close();
             /*QTextStream in(&file);
             textEdit->setText(in.readAll());
             file.close();*/
-            qDebug() << fileName;
+            fileDialog -> openFile(fileName);
         }
 
 }

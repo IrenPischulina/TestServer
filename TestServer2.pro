@@ -30,7 +30,8 @@ SOURCES += \
     controller.cpp \
     receiver.cpp \
     setip.cpp \
-    state.cpp
+    state.cpp \
+    filedialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,7 +39,8 @@ HEADERS += \
     controller.h \
     receiver.h \
     setip.h \
-    state.h
+    state.h \
+    filedialog.h
 
 FORMS += \
         mainwindow.ui \

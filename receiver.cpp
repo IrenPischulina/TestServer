@@ -6,7 +6,7 @@
 Receiver::Receiver()
 {
     socket = new QUdpSocket();
-    socket -> bind(QHostAddress("192.168.1.131"), 9002);
+    socket -> bind(QHostAddress("10.0.183.148"), 9002);
     connect(socket, SIGNAL(readyRead()), SLOT(readSlot()));
 }
 

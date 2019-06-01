@@ -19,13 +19,13 @@ public:
     void createBeginEdgeList();
 
     //добавляет к списку переходов окраску
-    void createEndEdgeList();
+    void createEndEdgeList(bool pressedElement);
 
     //из списка переходов graphviz делает картинку(граф)
     void createGraph();
 
     //из списка переходов формируется текст
-    void createText();
+    void createText(bool pressedElement);
 
 
 signals:

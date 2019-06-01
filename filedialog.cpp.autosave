@@ -1,0 +1,20 @@
+#include "filedialog.h"
+
+FileDialog::FileDialog(QObject *parent) : QObject(parent)
+{
+
+}
+
+void FileDialog::openFile(QString fileName)
+{
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly)) {
+        QMessageBox::critical(this, tr("Error"), tr("Could not open file"));
+        return;
+    }
+    file.close();
+    /*QTextStream in(&file);
+    textEdit->setText(in.readAll());
+    file.close();*/
+
+}

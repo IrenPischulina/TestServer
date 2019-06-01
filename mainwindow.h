@@ -8,6 +8,7 @@
 #include "settransitions.h"
 #include "controller.h"
 #include "setip.h"
+#include "filedialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -26,6 +27,8 @@ public slots:
     void setIPAddress();
     void updateImage(QImage image);
     void updateText(QString text);
+    void clearTransitionsList();
+    void openFile();
 
 private:
     Ui::MainWindow *ui;
@@ -33,6 +36,7 @@ private:
     Controller * controller;
     SetIP * setIP;
     QGraphicsScene * sc1;
+    FileDialog * fileDialog;
 };
 
 #endif // MAINWINDOW_H

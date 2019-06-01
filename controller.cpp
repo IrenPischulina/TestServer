@@ -39,27 +39,28 @@ void Controller::createBeginEdgeList()
     createGraph();
 }
 
-void Controller::createEndEdgeList()
+void Controller::createEndEdgeList(bool pressedElement)
 {
     endEdgeList = "";
 
-    //добавление строк для окраски текущего и предыдущего состояний
-    for( int i = 0; i < states.size(); i ++)
-    {
+    if(pressedElement == false)
+        //добавление строк для окраски текущего и предыдущего состояний
+        for( int i = 0; i < states.size(); i ++)
+        {
 
-        if(states[i] -> getNumberState() == transitions[transitions.size() - 1])
-            endEdgeList += QString::number(transitions[transitions.size() - 1]) + "[color=\"#00FF00\"];\n";
+            if(states[i] -> getNumberState() == transitions[transitions.size() - 1])
+                endEdgeList += QString::number(transitions[transitions.size() - 1]) + "[color=\"#00FF00\"];\n";
 
-        if(transitions.size() > 1)
-            if(states[i] -> getNumberState() == transitions[transitions.size() - 2])
-                endEdgeList += QString::number(transitions[transitions.size() - 2]) + "[color=\"#AAFFAA\"];\n";
-    }
+            if(transitions.size() > 1)
+                if(states[i] -> getNumberState() == transitions[transitions.size() - 2])
+                    endEdgeList += QString::number(transitions[transitions.size() - 2]) + "[color=\"#AAFFAA\"];\n";
+        }
     endEdgeList += "}";
 
     //создание графа
     createGraph();
     //создание текста для вывода
-    createText();
+    createText(pressedElement);
 
 }
 
@@ -86,58 +87,73 @@ void Controller::createGraph()
     imageReady(img);
 }
 
-void Controller::createText()
+void Controller::createText(bool pressedElement)
 {
     State * current = nullptr;//текущее состояния
     State * previous = nullptr;//предыдущее состояние
 
-    //поиск в списке состояний состояний с номерами, которые пришли от приложения
-    for (int i = 0; i < states.size(); i ++)
-    {
-        if(states[i] -> getNumberState() == transitions[transitions.size() - 1])
-            current = states[i];
 
-        if(transitions.size() > 1)
-            if(states[i] -> getNumberState() == transitions[transitions.size() - 2])
-                previous = states[i];
+    QString tempStr = "";
+
+    if(pressedElement == true)
+    {
+        tempStr += "Нажатие на \"" + elements[elements.size() - 1] + "\" \n" ;
     }
-
-    //начало формирования строки для вывода в текстедит
-    QString tempStr = "Переход: \n";
-    //если состояний в списке больше одного
-    if(transitions.size() > 1)
+    else
     {
-        tempStr += QString::number(transitions[transitions.size() - 2]);
-        if(previous != nullptr)
-            tempStr += "(" + previous -> getNameState() + ")";
+        if(transitions.size() >= 1)
+            //поиск в списке состояний состояний с номерами, которые пришли от приложения
+            for (int i = 0; i < states.size(); i ++)
+            {
+                if(states[i] -> getNumberState() == transitions[transitions.size() - 1])
+                    current = states[i];
+
+                if(transitions.size() > 1)
+                    if(states[i] -> getNumberState() == transitions[transitions.size() - 2])
+                        previous = states[i];
+            }
+
+        //начало формирования строки для вывода в текстедит
+        tempStr += "Переход: \n";
+        //если состояний в списке больше одного
+        if(transitions.size() > 1)
+        {
+            tempStr += QString::number(transitions[transitions.size() - 2]);
+            if(previous != nullptr)
+                tempStr += "(" + previous -> getNameState() + ")";
+            else
+                tempStr += "(состояние не задано)";
+        }
+
+        tempStr += "->" + QString::number(transitions[transitions.size() - 1]);
+        if(current != nullptr)
+            tempStr += "(" + current -> getNameState() + ")";
         else
             tempStr += "(состояние не задано)";
-    }
 
-    tempStr += "->" + QString::number(transitions[transitions.size() - 1]);
-    if(current != nullptr)
-        tempStr += "(" + current -> getNameState() + ")";
-    else
-        tempStr += "(состояние не задано)";
-
-    bool allowTransition = false;//флаг на разрешенность перехода
-    if(current != nullptr && previous != nullptr)
-    {
-        QVector <int> tempVector;
-        tempVector = previous -> getToStates();
-        for (int i = 0; i < tempVector.size(); i ++)
+        bool allowTransition = false;//флаг на разрешенность перехода
+        if(current != nullptr && previous != nullptr)
         {
-            if(tempVector[i] == current -> getNumberState())//флаг меняется, если такой переход найден
+            if(previous == current)//если предыдущее состояние равно текущему, то переход считается разрешенным
                 allowTransition = true;
+            else
+            {
+                QVector <int> tempVector;
+                tempVector = previous -> getToStates();
+                for (int i = 0; i < tempVector.size(); i ++)
+                {
+                    if(tempVector[i] == current -> getNumberState())//флаг меняется, если такой переход найден
+                        allowTransition = true;
+                }
+            }
         }
+        else if(current != nullptr && transitions.size() == 1)//если состояние только одно в списке, то переход считается разрешенным
+            allowTransition = true;
+
+        //если переход не был разрешен, к тексту добавляется об этом запись
+        if(allowTransition == false)
+            tempStr += "ошибка! запрещенный переход!";
     }
-    else if(current != nullptr && transitions.size() == 1)
-        allowTransition = true;
-
-    //если переход не был разрешен, к тексту добавляется об этом запись
-    if(allowTransition == false)
-        tempStr += "<div><font color=\"red\">ошибка! запрещенный переход!</font></div>";
-
     tempStr += "\n\n";
 
     //текст готов к отправке для вывода на экран
@@ -179,26 +195,20 @@ void Controller::setNetworkSettings(QString IP, int port)
 
 void Controller::receiveStr(QString str)
 {
+    //если список состояний пуст, ничего не делать
     if(states.size() == 0)
         return;
 
-    QStringList tempStr = str.split("#");//принятая строка бьется по #
-    qDebug() << tempStr.size();
-    /*
-    if(tempStr.size() == 2)
+    if(str[0] == "#")//если пришло состояние
     {
-        transitions.push_back(tempStr[0].toInt());//запись номера пришедшего состояния в список
-        elements.push_back(tempStr[1]);//запись названия элемента, вызвавшего это состояние
-    }
-    else
-    {
-        transitions.push_back(tempStr[0].toInt());//запись номера пришедшего состояния в список
-        elements.push_back("");//так как элемент не пришел, записывается пустая строка
-    }
-    */
-
-
-
-    createEndEdgeList();
-
+        QStringList tempStr = str.split("#");//принятая строка бьется по #
+        transitions.push_back(tempStr[1].toInt());//запись номера пришедшего состояния в список
+        createEndEdgeList(false);
+    } else
+        if(str[0] == "!")//если пришло нажатие на элемент
+        {
+            QStringList tempStr = str.split("!");//принятая строка бьется по !
+            elements.push_back(tempStr[1]);//запись нажатого элемента в список
+            createEndEdgeList(true);
+        }
 }

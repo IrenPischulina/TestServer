@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Список переходов</string>
   </property>
   <widget class="QPushButton" name="cancelButton">
    <property name="geometry">

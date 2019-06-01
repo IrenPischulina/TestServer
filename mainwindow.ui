@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>914</width>
-    <height>658</height>
+    <width>1073</width>
+    <height>827</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>TestServer</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="loadButton">
@@ -19,38 +19,38 @@
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>151</width>
+      <width>201</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Загрузить данные</string>
+     <string>Задать список состояний</string>
     </property>
    </widget>
    <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>60</y>
-      <width>601</width>
-      <height>451</height>
+      <y>90</y>
+      <width>721</width>
+      <height>651</height>
      </rect>
     </property>
    </widget>
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>60</y>
-      <width>241</width>
-      <height>451</height>
+      <x>750</x>
+      <y>90</y>
+      <width>311</width>
+      <height>651</height>
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="setIPButton">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>230</x>
       <y>10</y>
       <width>231</width>
       <height>41</height>
@@ -60,13 +60,62 @@
      <string>Задать параметры соединения</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Граф переходов:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>60</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Список переходов:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="clearListButton">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>750</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Очистить список</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>914</width>
+     <width>1073</width>
      <height>25</height>
     </rect>
    </property>
@@ -74,9 +123,84 @@
     <property name="title">
      <string>Файл</string>
     </property>
+    <addaction name="separator"/>
+    <addaction name="action_8"/>
+    <addaction name="action_9"/>
+    <addaction name="action_10"/>
+    <addaction name="separator"/>
+    <addaction name="action_11"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Тест</string>
+    </property>
+    <addaction name="action_2"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>Граф</string>
+    </property>
+    <addaction name="action_13"/>
    </widget>
    <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
   </widget>
+  <action name="action">
+   <property name="text">
+    <string>Открыть файл </string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>Сохранить результаты</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>Задать список состояний</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>Сохранить результаты теста</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>Задать список состояний</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>Задать параметры соединения</string>
+   </property>
+  </action>
+  <action name="action_8">
+   <property name="text">
+    <string>Открыть...</string>
+   </property>
+  </action>
+  <action name="action_9">
+   <property name="text">
+    <string>Задать список состояний</string>
+   </property>
+  </action>
+  <action name="action_10">
+   <property name="text">
+    <string>Задать параметры соединения</string>
+   </property>
+  </action>
+  <action name="action_11">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
+  <action name="action_13">
+   <property name="text">
+    <string>Изменить расположение </string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
