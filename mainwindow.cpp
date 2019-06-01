@@ -91,8 +91,11 @@ MainWindow::MainWindow(QWidget *parent) :
             this,
             SLOT(saveFile()));
 
-
-
+    //сохранить результаты теста
+    connect(ui -> action_2,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(saveResults()));
 }
 
 MainWindow::~MainWindow()
@@ -156,5 +159,24 @@ void MainWindow::saveFile()
         }
         file.close();
         setTransitions -> saveFile(fileName);
+    }
+}
+
+void MainWindow::saveResults()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "",
+                                                    tr("Text Files (*.txt)")) + ".txt";
+
+    if (fileName != "") {
+        QFile file(fileName);
+        if (!file.open(QIODevice::WriteOnly)) {
+            QMessageBox::critical(this, tr("Error"), tr("Could not save file"));
+            return;
+        }
+        QTextStream stream(&file);
+        stream << ui -> textEdit -> toPlainText();
+        stream.flush();
+        file.close();
+
     }
 }

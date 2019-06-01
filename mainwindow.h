@@ -34,6 +34,7 @@ public slots:
     void clearTransitionsList();
     void openFile();
     void saveFile();
+    void saveResults();
 
 
 private:

@@ -6,7 +6,9 @@
 Receiver::Receiver()
 {
     socket = new QUdpSocket();
-    socket -> bind(QHostAddress("10.0.183.148"), 9002);
+    //"192.168.1.131"
+    //"10.0.183.148"
+    socket -> bind(QHostAddress("192.168.1.131"), 9002);
     connect(socket, SIGNAL(readyRead()), SLOT(readSlot()));
 }
 
@@ -25,8 +27,6 @@ void Receiver::readSlot()
     socket -> readDatagram(datagram.data(), datagram.size(), address);
 
     QString str = QString::fromUtf8(datagram);//принятая строка
-
-    qDebug() << str;
 
     sendStr(str);
 
