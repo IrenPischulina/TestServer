@@ -1,5 +1,6 @@
 #include "settransitions.h"
 #include "ui_settransitions.h"
+#include <QDebug>
 
 SetTransitions::SetTransitions(QWidget *parent) :
     QWidget(parent),
@@ -26,6 +27,45 @@ SetTransitions::SetTransitions(QWidget *parent) :
 SetTransitions::~SetTransitions()
 {
     delete ui;
+}
+
+void SetTransitions::openFile(QString fileName)
+{
+    //очистка памяти
+    for(int i = 0; i < numberLineEdits.size(); i ++)
+    {
+        delete numberLineEdits[i];
+        delete nameLineEdits[i];
+        delete toStatesLineEdits[i];
+    }
+    numberLineEdits.clear();
+    nameLineEdits.clear();
+    toStatesLineEdits.clear();
+
+    //открытие файла
+    QFile file(fileName);
+    QString strNumb, strName, strToStates;
+
+    QTextStream in(&file);
+    file.open(QIODevice::ReadOnly);
+
+
+    while (!(in.atEnd())) {
+
+        in >> strNumb;
+        in >> strName;
+        in >> strToStates;
+
+        addLineEdit();
+
+        numberLineEdits[numberLineEdits.size() - 1] -> setText(strNumb);
+        nameLineEdits[nameLineEdits.size() - 1] -> setText(strName);
+        toStatesLineEdits[toStatesLineEdits.size() - 1] -> setText(strToStates);
+
+    }
+    file.close();
+    deleteSlot();
+    okaySlot();
 }
 
 void SetTransitions::addLineEdit()

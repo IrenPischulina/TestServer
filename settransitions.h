@@ -4,6 +4,9 @@
 #include <QWidget>
 #include <QVector>
 #include <QLineEdit>
+#include <QFile>
+#include <QTextStream>
+
 
 namespace Ui {
 class SetTransitions;
@@ -16,6 +19,7 @@ class SetTransitions : public QWidget
 public:
     explicit SetTransitions(QWidget *parent = 0);
     ~SetTransitions();
+    void openFile(QString fileName);
 
 public slots:
     void addLineEdit();

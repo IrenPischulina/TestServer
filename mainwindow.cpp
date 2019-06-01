@@ -10,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent) :
     setTransitions = new SetTransitions();
     controller = new Controller();
     setIP = new SetIP();
-    fileDialog = new FileDialog();
 
 
     //создание и отрисовка сцены
@@ -85,6 +84,8 @@ MainWindow::MainWindow(QWidget *parent) :
             this,
             SLOT(openFile()));
 
+
+
 }
 
 MainWindow::~MainWindow()
@@ -129,10 +130,8 @@ void MainWindow::openFile()
                 QMessageBox::critical(this, tr("Error"), tr("Could not open file"));
                 return;
             }
-            /*QTextStream in(&file);
-            textEdit->setText(in.readAll());
-            file.close();*/
-            qDebug() << fileName;
+            file.close();
+            setTransitions -> openFile(fileName);
         }
 
 }

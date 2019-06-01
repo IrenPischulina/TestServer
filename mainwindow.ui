@@ -129,6 +129,7 @@
     <addaction name="action_10"/>
     <addaction name="separator"/>
     <addaction name="action_11"/>
+    <addaction name="action_5"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -199,6 +200,11 @@
   <action name="action_13">
    <property name="text">
     <string>Изменить расположение </string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>Сохранить</string>
    </property>
   </action>
  </widget>

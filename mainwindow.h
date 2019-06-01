@@ -4,11 +4,15 @@
 #include <QMainWindow>
 #include <QImage>
 #include <QGraphicsScene>
+#include <QFileDialog>
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
 
 #include "settransitions.h"
 #include "controller.h"
 #include "setip.h"
-#include "filedialog.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -36,7 +40,6 @@ private:
     Controller * controller;
     SetIP * setIP;
     QGraphicsScene * sc1;
-    FileDialog * fileDialog;
 };
 
 #endif // MAINWINDOW_H

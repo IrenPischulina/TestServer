@@ -33,8 +33,9 @@ void Controller::createBeginEdgeList()
                 " (" +
                 states[i] -> getNameState() +
                 ")\"];\n";
-        endEdgeList = "}";
+
     }
+    endEdgeList = "}";
     //создание графа
     createGraph();
 }
@@ -44,7 +45,7 @@ void Controller::createEndEdgeList(bool pressedElement)
     endEdgeList = "";
 
     if(pressedElement == false)
-        //добавление строк для окраски текущего и предыдущего состояний
+       { //добавление строк для окраски текущего и предыдущего состояний
         for( int i = 0; i < states.size(); i ++)
         {
 
@@ -55,6 +56,7 @@ void Controller::createEndEdgeList(bool pressedElement)
                 if(states[i] -> getNumberState() == transitions[transitions.size() - 2])
                     endEdgeList += QString::number(transitions[transitions.size() - 2]) + "[color=\"#AAFFAA\"];\n";
         }
+    }
     endEdgeList += "}";
 
     //создание графа
