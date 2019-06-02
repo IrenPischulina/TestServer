@@ -115,8 +115,22 @@ void MainWindow::setIPAddress()
 
 void MainWindow::updateImage(QImage image)
 {
+    int imgWidth, imgHeight;
     sc1 -> clear();
-    sc1 -> addPixmap(QPixmap::fromImage(image).scaled(image.width(), image.height()));
+
+    //если картинка шире сцены, приравниваем ее ширину к ширине сцены, чтобы не выехала за края
+    if(image.width() > ui -> graphicsView -> width())
+        imgWidth = ui -> graphicsView -> width();
+    else
+        imgWidth = image.width();
+
+    //с высотой то же самое
+    if(image.height() > ui -> graphicsView -> height())
+        imgHeight = ui -> graphicsView -> height();
+    else
+        imgHeight = image.height();
+
+    sc1 -> addPixmap(QPixmap::fromImage(image).scaled(imgWidth, imgHeight));
 }
 
 void MainWindow::updateText(QString text)

@@ -42,6 +42,8 @@ void Controller::createBeginEdgeList()
 
 void Controller::createEndEdgeList(bool pressedElement)
 {
+    QString oldEndList;
+    oldEndList = endEdgeList;
     endEdgeList = "";
 
     if(pressedElement == false)
@@ -57,6 +59,8 @@ void Controller::createEndEdgeList(bool pressedElement)
                     endEdgeList += QString::number(transitions[transitions.size() - 2]) + "[color=\"#AAFFAA\"];\n";
         }
     }
+    else
+        endEdgeList += oldEndList;
     endEdgeList += "}";
 
     //создание графа
