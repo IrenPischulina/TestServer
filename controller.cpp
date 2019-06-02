@@ -58,10 +58,10 @@ void Controller::createEndEdgeList(bool pressedElement)
                 if(states[i] -> getNumberState() == transitions[transitions.size() - 2])
                     endEdgeList += QString::number(transitions[transitions.size() - 2]) + "[color=\"#AAFFAA\"];\n";
         }
+        endEdgeList += "}";
     }
     else
         endEdgeList += oldEndList;
-    endEdgeList += "}";
 
     //создание графа
     createGraph();
