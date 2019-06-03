@@ -7,31 +7,18 @@
     <x>0</x>
     <y>0</y>
     <width>1192</width>
-    <height>859</height>
+    <height>810</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>TestServer</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="loadButton">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>10</y>
-      <width>201</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Задать список состояний</string>
-    </property>
-   </widget>
    <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>90</y>
+      <y>40</y>
       <width>831</width>
       <height>681</height>
      </rect>
@@ -41,30 +28,17 @@
     <property name="geometry">
      <rect>
       <x>860</x>
-      <y>90</y>
+      <y>40</y>
       <width>311</width>
       <height>681</height>
      </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="setIPButton">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>10</y>
-      <width>231</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Задать параметры соединения</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>60</y>
+      <y>10</y>
       <width>141</width>
       <height>21</height>
      </rect>
@@ -82,7 +56,7 @@
     <property name="geometry">
      <rect>
       <x>860</x>
-      <y>60</y>
+      <y>10</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -100,13 +74,26 @@
     <property name="geometry">
      <rect>
       <x>1020</x>
-      <y>780</y>
+      <y>730</y>
       <width>151</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string>Очистить список</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="saveButton">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>730</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Сохранить результаты</string>
     </property>
    </widget>
   </widget>
@@ -128,24 +115,10 @@
     <addaction name="action_9"/>
     <addaction name="action_10"/>
     <addaction name="separator"/>
-    <addaction name="action_11"/>
     <addaction name="action_5"/>
-   </widget>
-   <widget class="QMenu" name="menu_2">
-    <property name="title">
-     <string>Тест</string>
-    </property>
-    <addaction name="action_2"/>
-   </widget>
-   <widget class="QMenu" name="menu_3">
-    <property name="title">
-     <string>Граф</string>
-    </property>
-    <addaction name="action_13"/>
+    <addaction name="action_11"/>
    </widget>
    <addaction name="menu"/>
-   <addaction name="menu_2"/>
-   <addaction name="menu_3"/>
   </widget>
   <action name="action">
    <property name="text">
@@ -194,7 +167,7 @@
   </action>
   <action name="action_11">
    <property name="text">
-    <string>Выход</string>
+    <string>Сохранить результаты тестирования</string>
    </property>
   </action>
   <action name="action_13">
@@ -204,7 +177,12 @@
   </action>
   <action name="action_5">
    <property name="text">
-    <string>Сохранить</string>
+    <string>Сохранить список состояний</string>
+   </property>
+  </action>
+  <action name="action_12">
+   <property name="text">
+    <string>Очистить список переходов</string>
    </property>
   </action>
  </widget>

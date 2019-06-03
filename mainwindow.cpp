@@ -23,17 +23,12 @@ MainWindow::MainWindow(QWidget *parent) :
     //растягивание сцены по graphicsView
     sc1 -> setSceneRect(0, 0, ui -> graphicsView -> width(), ui -> graphicsView -> height());
 
-    //кнопка, чтобы открыть окно загрузки данных о состояниях
-    connect(ui -> loadButton,
+    //кнопка для сохранения результатов тестирования
+    connect(ui -> saveButton,
             SIGNAL(clicked(bool)),
             this,
-            SLOT(loadData()));
+            SLOT(saveResults()));
 
-    //кнопка, открывающая окно с заданием адреса и порта
-    connect(ui -> setIPButton,
-            SIGNAL(clicked(bool)),
-            this,
-            SLOT(setIPAddress()));
 
     //кнопка для очистки списка переходов
     connect(ui -> clearListButton,
@@ -92,7 +87,7 @@ MainWindow::MainWindow(QWidget *parent) :
             SLOT(saveFile()));
 
     //сохранить результаты теста
-    connect(ui -> action_2,
+    connect(ui -> action_11,
             SIGNAL(triggered(bool)),
             this,
             SLOT(saveResults()));
