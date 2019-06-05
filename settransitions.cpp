@@ -62,7 +62,7 @@ void SetTransitions::openFile(QString fileName)
 
         //запись данных в лайнедиты
         numberLineEdits[numberLineEdits.size() - 1] -> setText(strNumb);
-        nameLineEdits[nameLineEdits.size() - 1] -> setText(strName);
+        nameLineEdits[nameLineEdits.size() - 1] -> setText(strName.replace("_", " "));
         toStatesLineEdits[toStatesLineEdits.size() - 1] -> setText(strToStates);
 
     }
@@ -81,9 +81,10 @@ void SetTransitions::saveFile(QString fileName)
 
     for( int i = 0; i < numberLineEdits.size(); i ++)
     {
+        QString tempStr = nameLineEdits[i] -> text().replace(" ", "_");//перед записью в файл заменяем все пробелы на нижние подчеркивания
         stream << numberLineEdits[i] -> text() +
                   " " +
-                  nameLineEdits[i] -> text() +
+                  tempStr +
                   " " +
                   toStatesLineEdits[i] -> text() +
                   "\n";
@@ -124,7 +125,8 @@ void SetTransitions::okaySlot()
     {
         numbers.push_back(numberLineEdits[i] -> text().toInt());
         names.push_back(nameLineEdits[i] -> text());
-        QStringList tempList = toStatesLineEdits[i] -> text().split(',');
+        QString strWithoutSpaces = toStatesLineEdits[i] -> text().remove(" ");//удаляем проблелы
+        QStringList tempList = strWithoutSpaces.split(',');//делим строку по запятым
         QVector <int> tempVector;
         for( int j = 0; j < tempList.size(); j ++)
         {

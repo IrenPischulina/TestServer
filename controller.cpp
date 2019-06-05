@@ -126,16 +126,16 @@ void Controller::createText(bool pressedElement)
         {
             tempStr += QString::number(transitions[transitions.size() - 2]);
             if(previous != nullptr)
-                tempStr += "(" + previous -> getNameState() + ")";
+                tempStr += " (" + previous -> getNameState() + ")";
             else
-                tempStr += "(состояние не задано)";
+                tempStr += " (состояние не задано)";
         }
 
-        tempStr += "->" + QString::number(transitions[transitions.size() - 1]);
+        tempStr += "  ->  " + QString::number(transitions[transitions.size() - 1]);
         if(current != nullptr)
-            tempStr += "(" + current -> getNameState() + ")";
+            tempStr += " (" + current -> getNameState() + ")";
         else
-            tempStr += "(состояние не задано)";
+            tempStr += " (состояние не задано)";
 
         bool allowTransition = false;//флаг на разрешенность перехода
         if(current != nullptr && previous != nullptr)
@@ -158,9 +158,9 @@ void Controller::createText(bool pressedElement)
 
         //если переход не был разрешен, к тексту добавляется об этом запись
         if(allowTransition == false)
-            tempStr += "ошибка! запрещенный переход!";
+            tempStr += "\nошибка! запрещенный переход!";
     }
-    tempStr += "\n\n";
+    tempStr += "\n";
 
     //текст готов к отправке для вывода на экран
     textReady(tempStr);
