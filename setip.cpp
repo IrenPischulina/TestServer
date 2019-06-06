@@ -8,9 +8,6 @@ SetIP::SetIP(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    oldIP = "";
-    oldPort = 0;
-
     connect(ui -> okayButton,
             SIGNAL(clicked(bool)),
             this,
@@ -21,8 +18,10 @@ SetIP::SetIP(QWidget *parent) :
             this,
             SLOT(cancelSlot()));
 
-    ui -> ipLineEdit -> setText(Receiver::getDefaultIP());
-    ui -> portLineEdit -> setText(QString::number(Receiver::getDefaultPort()));
+    oldIP = Receiver::getDefaultIP();
+    oldPort = Receiver::getDefaultPort();
+    ui -> ipLineEdit -> setText(oldIP);
+    ui -> portLineEdit -> setText(QString::number(oldPort));
 
 }
 
