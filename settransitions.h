@@ -6,6 +6,8 @@
 #include <QLineEdit>
 #include <QFile>
 #include <QTextStream>
+#include <QPushButton>
+#include <QSignalMapper>
 
 
 namespace Ui {
@@ -26,6 +28,8 @@ public slots:
     void addLineEdit();
     void okaySlot();
     void deleteSlot();
+    void deleteAllSlot();
+    void deleteStateSlot(int buttonId);
 
 signals:
     void okaySignal(QVector <int> numbers, QVector <QString> names, QVector <QVector <int>> transitions);
@@ -35,6 +39,9 @@ private:
     QVector <QLineEdit*> nameLineEdits;
     QVector <QLineEdit*> numberLineEdits;
     QVector <QLineEdit*> toStatesLineEdits;
+    QVector <QPushButton*> deleteButtons;
+
+    QSignalMapper * signalMapper;
 };
 
 #endif // SETTRANSITIONS_H

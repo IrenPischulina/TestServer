@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
+    <width>754</width>
     <height>617</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="cancelButton">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>460</x>
      <y>560</y>
      <width>131</width>
      <height>41</height>
@@ -65,9 +65,9 @@
   <widget class="QPushButton" name="okayButton">
    <property name="geometry">
     <rect>
-     <x>460</x>
+     <x>600</x>
      <y>560</y>
-     <width>151</width>
+     <width>131</width>
      <height>41</height>
     </rect>
    </property>
@@ -99,7 +99,7 @@
   <widget class="QPushButton" name="addStateButton">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>10</x>
      <y>560</y>
      <width>151</width>
      <height>41</height>
@@ -112,14 +112,14 @@
   <widget class="QPushButton" name="deleteButton">
    <property name="geometry">
     <rect>
-     <x>154</x>
+     <x>170</x>
      <y>560</y>
-     <width>131</width>
+     <width>191</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>Удалить состояние</string>
+    <string>Очистить список состояний</string>
    </property>
   </widget>
  </widget>
