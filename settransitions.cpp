@@ -21,11 +21,6 @@ SetTransitions::SetTransitions(QWidget *parent) :
             this,
             SLOT(deleteAllSlot()));
 
-   /* connect(ui -> cancelButton,
-            SIGNAL(clicked(bool)),
-            this,
-            SLOT(cancelSlot()));*/
-
     signalMapper = new QSignalMapper(this);
     // передаём номер кнопки из маппера в слот
     connect(signalMapper, SIGNAL(mapped(int)), this, SLOT(deleteStateSlot(int)));
@@ -47,21 +42,11 @@ void SetTransitions::openFile(QString fileName)
         delete nameLineEdits[i];
         delete toStatesLineEdits[i];
         delete deleteButtons[i];
-
-        delete oldNumberLineEdits[i];
-        delete oldNameLineEdits[i];
-        delete oldToStatesLineEdits[i];
-        delete oldDeleteButtons[i];
     }
     numberLineEdits.clear();
     nameLineEdits.clear();
     toStatesLineEdits.clear();
     deleteButtons.clear();
-
-    oldNumberLineEdits.clear();
-    oldNameLineEdits.clear();
-    oldToStatesLineEdits.clear();
-    oldDeleteButtons.clear();
 
     //открытие файла
     QFile file(fileName);
@@ -145,12 +130,6 @@ void SetTransitions::addLineEdit()
     connect(pushButton, SIGNAL(clicked(bool)), signalMapper, SLOT(map()));
     signalMapper -> setMapping(pushButton, deleteButtons.size() - 1); // по клику кнопки будем передавать номер этой кнопки
 
-    //на всякий случай запоминаем старые состояния
-    /*oldNumberLineEdits = numberLineEdits;
-    oldNameLineEdits = nameLineEdits;
-    oldToStatesLineEdits = toStatesLineEdits;
-    oldDeleteButtons = deleteButtons;*/
-
 }
 
 void SetTransitions::okaySlot()
@@ -214,12 +193,6 @@ void SetTransitions::deleteAllSlot()
 {
     if(numberLineEdits.size() == 0)
         return;
-
-    //на всякий случай запоминаем старые состояния
-   /* oldNumberLineEdits = numberLineEdits;
-    oldNameLineEdits = nameLineEdits;
-    oldToStatesLineEdits = toStatesLineEdits;
-    oldDeleteButtons = deleteButtons;*/
 
     for( int i = numberLineEdits.size() - 1; i >= 0; i --)
     {
@@ -294,19 +267,4 @@ void SetTransitions::deleteStateSlot(int buttonId)
 
 }
 
-void SetTransitions::cancelSlot()
-{
-    /*if(numberLineEdits.size() == 0)
-        return;
-    numberLineEdits = oldNumberLineEdits;
-    nameLineEdits = oldNameLineEdits;
-    toStatesLineEdits = oldToStatesLineEdits;
-    deleteButtons = oldDeleteButtons;
-
-    for(int i = 0; i < numberLineEdits.size(); i ++)
-    {
-        numberLineEdits[i]->show();
-    }
-    hide();*/
-}
 

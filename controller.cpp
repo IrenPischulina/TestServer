@@ -18,7 +18,8 @@ void Controller::createBeginEdgeList()
 {
     //этот метод вызывается один раз, после задания пользователем информации о состояниях
     //последующие разы вызывается, если пользователь меняет эти данные
-    beginEdgeList = "digraph G {\n rankdir=LR;\n";
+    //beginEdgeList = "digraph G {\n rankdir=LR;\n";
+    beginEdgeList = "digraph G {\n";
     for( int i = 0; i < states.size(); i ++)
     {
         QVector <int> toStates;

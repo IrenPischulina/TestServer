@@ -30,7 +30,6 @@ public slots:
     void deleteSlot();
     void deleteAllSlot();
     void deleteStateSlot(int buttonId);
-    void cancelSlot();
 
 signals:
     void okaySignal(QVector <int> numbers, QVector <QString> names, QVector <QVector <int>> transitions);
@@ -43,11 +42,6 @@ private:
     QVector <QPushButton*> deleteButtons;
 
     QSignalMapper * signalMapper;//для коннекта слотов к массиву кнопок удаления
-
-    QVector <QLineEdit*> oldNameLineEdits;
-    QVector <QLineEdit*> oldNumberLineEdits;
-    QVector <QLineEdit*> oldToStatesLineEdits;
-    QVector <QPushButton*> oldDeleteButtons;
 };
 
 #endif // SETTRANSITIONS_H

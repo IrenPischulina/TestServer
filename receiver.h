@@ -6,8 +6,9 @@
 #include <QString>
 #include <QDataStream>
 
-const QString defaultIP = "10.0.183.148";
-//const QString defaultIP = "192.168.1.131";
+//const QString defaultIP = "10.0.183.148";//сеть ASTU
+//const QString defaultIP = "192.168.1.131";//сеть som-zefir
+const QString defaultIP = "192.168.43.121";//сеть hodor
 const int defaultPort = 9002;
 
 class Receiver : public QObject

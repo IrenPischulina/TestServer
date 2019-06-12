@@ -140,13 +140,13 @@ void MainWindow::clearTransitionsList()
 
 void MainWindow::openFile()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "",
-                                                    tr("Text Files (*.txt)"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Открыть файл"), "",
+                                                    tr("Текстовые файлы (*.txt)"));
 
     if (fileName != "") {
         QFile file(fileName);
         if (!file.open(QIODevice::ReadOnly)) {
-            QMessageBox::critical(this, tr("Error"), tr("Could not open file"));
+            QMessageBox::critical(this, tr("Ошибка"), tr("Не удалось открыть файл"));
             return;
         }
         file.close();
@@ -157,13 +157,13 @@ void MainWindow::openFile()
 
 void MainWindow::saveFile()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "",
-                                                    tr("Text Files (*.txt)")) + ".txt";
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Сохранить файл"), "",
+                                                    tr("Текстовые файлы (*.txt)")) + ".txt";
 
     if (fileName != "") {
         QFile file(fileName);
         if (!file.open(QIODevice::WriteOnly)) {
-            QMessageBox::critical(this, tr("Error"), tr("Could not save file"));
+            QMessageBox::critical(this, tr("Ошибка"), tr("Не удалось сохранить файл"));
             return;
         }
         file.close();
@@ -173,13 +173,13 @@ void MainWindow::saveFile()
 
 void MainWindow::saveResults()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "",
-                                                    tr("Text Files (*.txt)")) + ".txt";
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Сохранить файл"), "",
+                                                    tr("Текстовые файлы (*.txt)")) + ".txt";
 
     if (fileName != "") {
         QFile file(fileName);
         if (!file.open(QIODevice::WriteOnly)) {
-            QMessageBox::critical(this, tr("Error"), tr("Could not save file"));
+            QMessageBox::critical(this, tr("Ошибка"), tr("Не удалось сохранить файл"));
             return;
         }
         QTextStream stream(&file);
