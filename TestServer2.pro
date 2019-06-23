@@ -30,7 +30,8 @@ SOURCES += \
     controller.cpp \
     receiver.cpp \
     setip.cpp \
-    state.cpp
+    state.cpp \
+    reference.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,9 +39,11 @@ HEADERS += \
     controller.h \
     receiver.h \
     setip.h \
-    state.h
+    state.h \
+    reference.h
 
 FORMS += \
         mainwindow.ui \
     settransitions.ui \
-    setip.ui
+    setip.ui \
+    reference.ui

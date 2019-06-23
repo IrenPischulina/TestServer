@@ -12,6 +12,7 @@
 #include "settransitions.h"
 #include "controller.h"
 #include "setip.h"
+#include "reference.h"
 
 
 namespace Ui {
@@ -35,6 +36,7 @@ public slots:
     void openFile();
     void saveFile();
     void saveResults();
+    void reference1();
 
 
 private:
@@ -43,6 +45,7 @@ private:
     Controller * controller;
     SetIP * setIP;
     QGraphicsScene * sc1;
+    Reference * reference;
 };
 
 #endif // MAINWINDOW_H

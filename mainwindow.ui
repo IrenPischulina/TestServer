@@ -6,9 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1192</width>
+    <width>1159</width>
     <height>810</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>11</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>TestServer</string>
@@ -19,7 +24,7 @@
      <rect>
       <x>20</x>
       <y>40</y>
-      <width>831</width>
+      <width>771</width>
       <height>681</height>
      </rect>
     </property>
@@ -27,15 +32,15 @@
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>860</x>
+      <x>800</x>
       <y>40</y>
-      <width>311</width>
+      <width>341</width>
       <height>681</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>15</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
    </widget>
@@ -60,7 +65,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>860</x>
+      <x>800</x>
       <y>10</y>
       <width>161</width>
       <height>21</height>
@@ -78,7 +83,7 @@
    <widget class="QPushButton" name="clearListButton">
     <property name="geometry">
      <rect>
-      <x>1020</x>
+      <x>990</x>
       <y>730</y>
       <width>151</width>
       <height>41</height>
@@ -91,9 +96,9 @@
    <widget class="QPushButton" name="saveButton">
     <property name="geometry">
      <rect>
-      <x>860</x>
+      <x>800</x>
       <y>730</y>
-      <width>151</width>
+      <width>181</width>
       <height>41</height>
      </rect>
     </property>
@@ -107,8 +112,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1192</width>
-     <height>25</height>
+     <width>1159</width>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -123,7 +128,14 @@
     <addaction name="action_5"/>
     <addaction name="action_11"/>
    </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Справка</string>
+    </property>
+    <addaction name="action_14"/>
+   </widget>
    <addaction name="menu"/>
+   <addaction name="menu_2"/>
   </widget>
   <action name="action">
    <property name="text">
@@ -188,6 +200,11 @@
   <action name="action_12">
    <property name="text">
     <string>Очистить список переходов</string>
+   </property>
+  </action>
+  <action name="action_14">
+   <property name="text">
+    <string>О программе</string>
    </property>
   </action>
  </widget>

@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setTransitions = new SetTransitions();
     controller = new Controller();
     setIP = new SetIP();
-
+    reference = new Reference();
 
     //создание и отрисовка сцены
     sc1 = new QGraphicsScene();
@@ -91,6 +91,11 @@ MainWindow::MainWindow(QWidget *parent) :
             SIGNAL(triggered(bool)),
             this,
             SLOT(saveResults()));
+
+    connect(ui ->action_14,
+            SIGNAL(triggered(bool)),
+            this,
+            SLOT(reference1()));
 }
 
 MainWindow::~MainWindow()
@@ -188,4 +193,9 @@ void MainWindow::saveResults()
         file.close();
 
     }
+}
+
+void MainWindow::reference1()
+{
+    reference -> show();
 }
